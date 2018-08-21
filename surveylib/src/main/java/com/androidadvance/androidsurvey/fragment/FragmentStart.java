@@ -1,4 +1,4 @@
-package com.androidadvance.androidsurvey.fragment;
+package com.ryerson.litrans.carboncount.survey.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.androidadvance.androidsurvey.R;
-import com.androidadvance.androidsurvey.SurveyActivity;
-import com.androidadvance.androidsurvey.models.SurveyProperties;
+import com.ryerson.litrans.carboncount.R;
+import com.ryerson.litrans.carboncount.survey.SurveyActivity;
+import com.ryerson.litrans.carboncount.survey.models.SurveyProperties;
 
 
 public class FragmentStart extends Fragment {

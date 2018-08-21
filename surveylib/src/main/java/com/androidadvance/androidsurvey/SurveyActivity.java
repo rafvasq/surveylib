@@ -1,4 +1,4 @@
-package com.androidadvance.androidsurvey;
+package com.ryerson.litrans.carboncount.survey;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,18 +7,21 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
-import com.androidadvance.androidsurvey.adapters.AdapterFragmentQ;
-import com.androidadvance.androidsurvey.fragment.FragmentCheckboxes;
-import com.androidadvance.androidsurvey.fragment.FragmentEnd;
-import com.androidadvance.androidsurvey.fragment.FragmentMultiline;
-import com.androidadvance.androidsurvey.fragment.FragmentNumber;
-import com.androidadvance.androidsurvey.fragment.FragmentRadioboxes;
-import com.androidadvance.androidsurvey.fragment.FragmentStart;
-import com.androidadvance.androidsurvey.fragment.FragmentTextSimple;
-import com.androidadvance.androidsurvey.models.Question;
-import com.androidadvance.androidsurvey.models.SurveyPojo;
 import com.google.gson.Gson;
+import com.ryerson.litrans.carboncount.R;
+import com.ryerson.litrans.carboncount.survey.adapters.AdapterFragmentQ;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentCar;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentCheckboxes;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentEnd;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentGender;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentMultiline;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentNumber;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentRadioboxes;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentRadioboxesWithSkip;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentStart;
+import com.ryerson.litrans.carboncount.survey.fragment.FragmentTextSimple;
+import com.ryerson.litrans.carboncount.survey.models.Question;
+import com.ryerson.litrans.carboncount.survey.models.SurveyPojo;
 
 import java.util.ArrayList;
 
@@ -33,8 +36,6 @@ public class SurveyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_survey);
 
-
-
         if (getIntent().getExtras() != null) {
             Bundle bundle = getIntent().getExtras();
             mSurveyPojo = new Gson().fromJson(bundle.getString("json_survey"), SurveyPojo.class);
@@ -42,7 +43,6 @@ public class SurveyActivity extends AppCompatActivity {
                 style_string = bundle.getString("style");
             }
         }
-
 
         Log.i("json Object = ", String.valueOf(mSurveyPojo.getQuestions()));
 
@@ -58,11 +58,35 @@ public class SurveyActivity extends AppCompatActivity {
             arraylist_fragments.add(frag_start);
         }
 
-        //- FILL -
         for (Question mQuestion : mSurveyPojo.getQuestions()) {
 
             if (mQuestion.getQuestionType().equals("String")) {
                 FragmentTextSimple frag = new FragmentTextSimple();
+                Bundle xBundle = new Bundle();
+                xBundle.putSerializable("data", mQuestion);
+                xBundle.putString("style", style_string);
+                frag.setArguments(xBundle);
+                arraylist_fragments.add(frag);
+            }
+            if (mQuestion.getQuestionType().equals("Car")) {
+                FragmentCar frag = new FragmentCar();
+                Bundle xBundle = new Bundle();
+                xBundle.putSerializable("data", mQuestion);
+                xBundle.putString("style", style_string);
+                frag.setArguments(xBundle);
+                arraylist_fragments.add(frag);
+            }
+            if (mQuestion.getQuestionType().equals("Gender")) {
+                FragmentGender frag = new FragmentGender();
+                Bundle xBundle = new Bundle();
+                xBundle.putSerializable("data", mQuestion);
+                xBundle.putString("style", style_string);
+                frag.setArguments(xBundle);
+                arraylist_fragments.add(frag);
+            }
+
+            if (mQuestion.getQuestionType().equals("RadioboxesWithSkip")) {
+                FragmentRadioboxesWithSkip frag = new FragmentRadioboxesWithSkip();
                 Bundle xBundle = new Bundle();
                 xBundle.putSerializable("data", mQuestion);
                 xBundle.putString("style", style_string);
@@ -108,7 +132,6 @@ public class SurveyActivity extends AppCompatActivity {
 
         }
 
-        //- END -
         FragmentEnd frag_end = new FragmentEnd();
         Bundle eBundle = new Bundle();
         eBundle.putSerializable("survery_properties", mSurveyPojo.getSurveyProperties());
@@ -116,16 +139,17 @@ public class SurveyActivity extends AppCompatActivity {
         frag_end.setArguments(eBundle);
         arraylist_fragments.add(frag_end);
 
-
         mPager = (ViewPager) findViewById(R.id.pager);
         AdapterFragmentQ mPagerAdapter = new AdapterFragmentQ(getSupportFragmentManager(), arraylist_fragments);
         mPager.setAdapter(mPagerAdapter);
-
-
     }
 
     public void go_to_next() {
         mPager.setCurrentItem(mPager.getCurrentItem() + 1);
+    }
+
+    public void go_to_next(int skip) {
+        mPager.setCurrentItem(mPager.getCurrentItem() + 1 + skip);
     }
 
 

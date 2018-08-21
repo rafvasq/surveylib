@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview_q_title"
+                style="?android:textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:lineSpacingMultiplier="1.2"
+                android:padding="16dp"
+                android:text="Title"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/compactCheck"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                android:text="Compact">
+            </CheckBox>
+
+            <RadioGroup
+                android:id="@+id/compact"
+                android:text="compact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/compact_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_marginLeft="60dp" />
+
+                <RadioButton
+                    android:id="@+id/compact_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:layout_marginLeft="60dp" />
+
+                <RadioButton
+                    android:id="@+id/compact_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3+"
+                    android:layout_marginLeft="60dp" />
+
+            </RadioGroup>
+
+            <CheckBox
+                android:id="@+id/sedanCheck"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                android:text="Sedan">
+            </CheckBox>
+
+            <RadioGroup
+                android:id="@+id/sedan"
+                android:text="sedan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+            <RadioButton
+                    android:id="@+id/sedan_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_marginLeft="60dp" />
+
+                <RadioButton
+                    android:id="@+id/sedan_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:layout_marginLeft="60dp" />
+
+                <RadioButton
+                    android:id="@+id/sedan_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3+"
+                    android:layout_marginLeft="60dp" />
+
+            </RadioGroup>
+
+            <CheckBox
+                android:id="@+id/suvCheck"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                android:text="SUV">
+            </CheckBox>
+            <RadioGroup
+                android:id="@+id/suv"
+                android:text="suv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+            <RadioButton
+                    android:id="@+id/suv_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_marginLeft="60dp" />
+
+                <RadioButton
+                    android:id="@+id/suv_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:layout_marginLeft="60dp" />
+
+                <RadioButton
+                    android:id="@+id/suv_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3+"
+                    android:layout_marginLeft="60dp" />
+
+            </RadioGroup>
+
+            <CheckBox
+                android:id="@+id/truckCheck"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                android:text="Truck">
+            </CheckBox>
+            <RadioGroup
+                android:id="@+id/truck"
+                android:text="truck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+            <RadioButton
+                    android:id="@+id/truck_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_marginLeft="60dp" />
+
+                <RadioButton
+                    android:id="@+id/truck_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:layout_marginLeft="60dp" />
+
+                <RadioButton
+                    android:id="@+id/truck_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3+"
+                    android:layout_marginLeft="60dp" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include
+        layout="@layout/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></include>
+
+</LinearLayout>

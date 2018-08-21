@@ -1,4 +1,6 @@
-package com.androidadvance.androidsurvey.models;
+package com.ryerson.litrans.carboncount.survey.models;
+
+import android.view.ViewDebug;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -37,6 +39,9 @@ public class Question implements Serializable {
     @SerializedName("number_of_lines")
     @Expose
     private Integer numberOfLines;
+    @SerializedName("skip")
+    @Expose
+    private Integer skip;
 
     /**
      *
@@ -196,8 +201,12 @@ public class Question implements Serializable {
      * @param numberOfLines
      * The number_of_lines
      */
+
     public void setNumberOfLines(Integer numberOfLines) {
         this.numberOfLines = numberOfLines;
     }
 
+    public Integer getSkip() { return skip; }
+
+    public void setSkip(Integer skip) { this.skip = skip; }
 }

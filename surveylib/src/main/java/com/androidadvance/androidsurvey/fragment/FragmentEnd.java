@@ -1,4 +1,4 @@
-package com.androidadvance.androidsurvey.fragment;
+package com.ryerson.litrans.carboncount.survey.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.androidadvance.androidsurvey.Answers;
-import com.androidadvance.androidsurvey.R;
-import com.androidadvance.androidsurvey.SurveyActivity;
-import com.androidadvance.androidsurvey.models.SurveyProperties;
+import com.ryerson.litrans.carboncount.R;
+import com.ryerson.litrans.carboncount.survey.Answers;
+import com.ryerson.litrans.carboncount.survey.SurveyActivity;
+import com.ryerson.litrans.carboncount.survey.models.SurveyProperties;
 
 public class FragmentEnd extends Fragment {
 
@@ -29,7 +29,6 @@ public class FragmentEnd extends Fragment {
 
         Button button_finish = (Button) rootView.findViewById(R.id.button_finish);
         textView_end = (TextView) rootView.findViewById(R.id.textView_end);
-
 
         button_finish.setOnClickListener(new View.OnClickListener() {
             @Override

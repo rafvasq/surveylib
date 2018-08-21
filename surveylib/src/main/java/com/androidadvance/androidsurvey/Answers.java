@@ -1,4 +1,4 @@
-package com.androidadvance.androidsurvey;
+package com.ryerson.litrans.carboncount.survey;
 
 import com.google.gson.Gson;
 

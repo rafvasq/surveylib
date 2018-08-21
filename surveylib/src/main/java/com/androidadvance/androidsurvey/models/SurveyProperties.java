@@ -1,4 +1,4 @@
-package com.androidadvance.androidsurvey.models;
+package com.ryerson.litrans.carboncount.survey.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

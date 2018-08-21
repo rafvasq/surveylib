@@ -1,11 +1,13 @@
-package com.androidadvance.androidsurvey.models;
+package com.ryerson.litrans.carboncount.survey.models;
 
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.ryerson.litrans.carboncount.survey.models.Question;
 
 public class SurveyPojo implements Serializable {
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.Html;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class FragmentRadioboxes extends Fragment {
+public class FragmentRadioboxesWithSkip extends Fragment {
+
+    String TAG = "FragmentRadioboxesWithSkip";
 
     private Question q_data;
     private FragmentActivity mContext;
@@ -33,6 +36,8 @@ public class FragmentRadioboxes extends Fragment {
     private RadioGroup radioGroup;
     private final ArrayList<RadioButton> allRb = new ArrayList<>();
     private boolean at_least_one_checked = false;
+    private boolean skip = false;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,9 +51,15 @@ public class FragmentRadioboxes extends Fragment {
         button_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((SurveyActivity) mContext).go_to_next();
+                if(skip){
+                    ((SurveyActivity) mContext).go_to_next(q_data.getSkip());
+                }
+                else{
+                    ((SurveyActivity) mContext).go_to_next();
+                }
             }
         });
+
         return rootView;
     }
 
@@ -68,7 +79,6 @@ public class FragmentRadioboxes extends Fragment {
             Answers.getInstance().put_answer(textview_q_title.getText().toString(), the_choice);
         }
 
-
         if (q_data.getRequired()) {
             if (at_least_one_checked) {
                 button_continue.setVisibility(View.VISIBLE);
@@ -78,16 +88,15 @@ public class FragmentRadioboxes extends Fragment {
         }
     }
 
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
 
         mContext = getActivity();
         q_data = (Question) getArguments().getSerializable("data");
 
         textview_q_title.setText(q_data.getQuestionTitle());
-
 
         List<String> qq_data = q_data.getChoices();
         if (q_data.getRandomChoices()) {
@@ -102,12 +111,25 @@ public class FragmentRadioboxes extends Fragment {
             radioGroup.addView(rb);
             allRb.add(rb);
 
-            rb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    collect_data();
-                }
-            });
+            if(rb.getText().toString().equals(q_data.getDescription()))
+            {
+                rb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if(isChecked) skip = true;
+                        collect_data();
+                    }
+                });
+            }
+            else {
+                rb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) skip = false;
+                        collect_data();
+                    }
+                });
+            }
         }
 
         if (q_data.getRequired()) {

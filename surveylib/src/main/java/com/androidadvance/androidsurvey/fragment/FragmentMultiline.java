@@ -1,4 +1,4 @@
-package com.androidadvance.androidsurvey.fragment;
+package com.ryerson.litrans.carboncount.survey.fragment;
 
 import android.app.Service;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.androidadvance.androidsurvey.Answers;
-import com.androidadvance.androidsurvey.R;
-import com.androidadvance.androidsurvey.SurveyActivity;
-import com.androidadvance.androidsurvey.models.Question;
+import com.ryerson.litrans.carboncount.R;
+import com.ryerson.litrans.carboncount.survey.Answers;
+import com.ryerson.litrans.carboncount.survey.SurveyActivity;
+import com.ryerson.litrans.carboncount.survey.models.Question;
 
 public class FragmentMultiline extends Fragment {
 

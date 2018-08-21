@@ -1,4 +1,4 @@
-package com.androidadvance.androidsurvey.adapters;
+package com.ryerson.litrans.carboncount.survey.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
